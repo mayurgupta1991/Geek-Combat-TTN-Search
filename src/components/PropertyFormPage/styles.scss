@@ -1,0 +1,71 @@
+@import '../../styles/color';
+@import '../../styles/responsive';
+
+.contentContainer {
+  border: 1px solid lightgray;
+}
+
+.contentHeader {
+  font-weight: 600;
+  padding-top: 28px;
+  font-size: 16px;
+  line-height: 16px;
+  position: relative;
+}
+
+.categoryContainer {
+  margin-bottom: 10px;
+}
+
+.heading {
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.closeContainer {
+  text-align: left;
+  margin-top: 16px;
+}
+
+.contentNameHeaders {
+  padding: 23px 20px 31px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: $grey600;
+  text-align: left;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.tooltipStyle {
+  background-color: $navy !important;
+  font-size: 11px !important;
+  font-weight: 400;
+  opacity: 1 !important;
+  padding: 8px 10px !important;
+
+  &:after{
+    border-left: 6px solid transparent !important;
+    border-right: 6px solid transparent !important;
+    margin-left: -6px !important;
+  }
+}
+
+@media (max-width: $breakpointLarge) {
+  .closeContainer {
+    margin: 0;
+    padding: 16px 0 16px 18px;
+  }
+}
+
+@media (max-width: $breakpointSmall) {
+  .categoryContainer {
+    margin: 0;
+    padding: 10px 0;
+  }
+}
+
+
