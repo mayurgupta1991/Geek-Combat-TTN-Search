@@ -7,7 +7,7 @@ const messages = {
     cookiesError: '* This website uses third-party cookies. Please enable them using the given link.',
     enableCookie: 'Enable Cookies',
     apiError: '* Some error occured please try again.',
-    loginGoogle: 'Log in with Google',
+    login: 'Login',
     signOut: 'Sign Out',
     dashboard: 'Dashboard',
     'breadCrumbs.dashboard': 'Application / Dashboard',

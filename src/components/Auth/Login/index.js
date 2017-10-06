@@ -95,7 +95,7 @@ class Login extends Component {
                 <div className={classes.buttonsDiv}>
                   <div className={googleBtnClass}>
                     <i className="fa fa-google-plus fa-lg" />
-                    <FormattedMessage id="loginGoogle" />
+                    <FormattedMessage id="login" />
                     <GoogleLogin
                       clientId={endpoints.GOOGLE_CLIENT_ID}
                       className={classes.hideButton}

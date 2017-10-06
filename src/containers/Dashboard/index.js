@@ -23,4 +23,4 @@ class Dashboard extends Component {
     }
 }
 
-export default injectIntl(Dashboard);
+export default Dashboard;

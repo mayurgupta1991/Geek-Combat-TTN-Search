@@ -24,7 +24,7 @@ const styles = {
         height: 60,
     },
     paper: {
-        padding: 20,
+        padding: 0,
         overflow: 'auto',
     },
     buttonsDiv: {
