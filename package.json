@@ -8,6 +8,7 @@
     "open:src": "babel-node tools/srcServer.js",
     "test:local": "mocha --opts mocha.opts",
     "lint": "eslint src",
+    "lint:changed": "LIST=`git diff-index --name-only HEAD | grep '.jsx\\{0,1\\}'$`; if [ \"$LIST\" ]; then eslint $LIST; fi",
     "clean": "babel-node tools/run clean",
     "copy": "babel-node tools/run copy",
     "bundle": "babel-node tools/run bundle",

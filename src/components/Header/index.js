@@ -2,9 +2,6 @@ import React, { PropTypes } from 'react';
 import { withRouter } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FontIcon from 'material-ui/FontIcon';
 import { FormattedMessage } from 'react-intl';
 import classes from './styles.scss';
 import style from './styles';
@@ -19,15 +16,18 @@ function Header({ styles, signOut, history }) {
           }
                 iconElementRight={
             <div style={style.iconsRightContainer}>
-                <span
+                <div
                     className={classes.logoutButton}
                     onClick={() => { history.push('/'); signOut(); }}
                 >
+                    <i className="material-icons">
+                        input
+                    </i>
                     <FormattedMessage id="signOut" />
-                </span>
+                </div>
             </div>
           }
-                />
+            />
         </div>
     );
 }
