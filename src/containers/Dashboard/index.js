@@ -16,7 +16,7 @@ class Dashboard extends Component {
               navigation={<FormattedMessage id="breadCrumbs.dashboard" />}
               minHeight={300}
             >
-
+                Dummy Content
             </PageBase>
           </div>
         );
