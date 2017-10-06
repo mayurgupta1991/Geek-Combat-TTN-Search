@@ -5,6 +5,7 @@ import { handleFetchError } from '../../util/errorHandler';
 import { userDashboard } from '../userDashboard';
 import { terminateSession } from '../configSettings';
 import { removeUserStorage } from '../../util/browserStorage';
+import { setSearchResult } from '../search';
 
 export function createUser(data) {
     const url = endpoints.createUserPath;
@@ -44,3 +45,40 @@ export function fetchUserAndLoadData() {
             return error;
         });
 }
+
+export function fetchSearchResult() {
+    const url = endpoints.userInfoPath;
+    return (dispatch, getState) => fetchWebApi(getAccessToken(getState), url).request
+      .then(response => {
+          const data = {
+              1: {
+                  name: 'Company 1',
+                  desc: 'BLAHHH BLAHHH BLAHH'
+              },
+              2: {
+                  name: 'Company 2',
+                  desc: 'BLAHHH BLAHHH BLAHH'
+              },
+              3: {
+                  name: 'Company 3',
+                  desc: 'BLAHHH BAHHH BLAHH'
+              },
+              4: {
+                  name: 'Company 4',
+                  desc: 'BLAHHH BLAHHH BLAHH'
+              },
+              5: {
+                  name: 'Company 5',
+                  desc: 'BLAHHH BLAHHH BLAHH'
+              }
+          };
+          dispatch(setSearchResult(data));
+          return response;
+      })
+      .catch(error => {
+          removeUserStorage();
+          dispatch(terminateSession());
+          return error;
+      });
+}
+

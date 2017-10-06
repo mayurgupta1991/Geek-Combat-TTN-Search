@@ -4,6 +4,7 @@ import runtimeSettings from './runtimeSettings';
 import authentication from './authentication';
 import userDashboard from './userDashboard';
 import dashboardUiStatus from './dashboardUiStatus';
+import search from './search';
 
 const rootReducer = combineReducers({
     intl: intlReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     authentication,
     userDashboard,
     dashboardUiStatus,
+    search,
 });
 
 export default rootReducer;

@@ -12,6 +12,7 @@ const messages = {
     addProject: 'Add Project',
     dashboard: 'Dashboard',
     'breadCrumbs.dashboard': 'Application / Dashboard',
+    'search.placeholder': 'Search Project',
 
 };
 export default messages;
