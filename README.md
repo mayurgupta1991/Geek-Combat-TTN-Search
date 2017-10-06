@@ -1,4 +1,4 @@
-## Welcome System React-Redux Application Code
+## Geek-Combat-TTN-Search React-Redux Application Code
 
 ## Table of Contents
 1. [Requirements](#requirements)

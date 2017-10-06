@@ -84,7 +84,7 @@ export function getGeoLocation(address) {
                 const lat = results[0].geometry.location.lat();
                 const lng = results[0].geometry.location.lng();
                 if (results[0].partial_match) {
-                  reject(new Error(`Geocode was not successful for the following reason: ${status}`));
+                    reject(new Error(`Geocode was not successful for the following reason: ${status}`));
                 }
                 resolve({ results, lat, lng });
             } else {

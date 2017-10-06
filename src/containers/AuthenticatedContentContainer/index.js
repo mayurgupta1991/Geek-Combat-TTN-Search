@@ -12,7 +12,6 @@ import AdminRoutes from '../RouteManagement/AdminRoutes';
 import GuestRoutes from '../RouteManagement/GuestRoutes';
 import HostRoutes from '../RouteManagement/HostRoutes';
 import { logOut } from '../../actions/async/authentication';
-import { fetchCountryList } from '../../actions/async/location';
 import endpoints from '../../endpoints/authentication';
 import { headerHeight, USER_TYPE } from '../../constants';
 import classes from './styles.scss';
@@ -21,14 +20,13 @@ class AuthenticatedContentContainer extends Component {
     constructor() {
         super();
         this.state = {
-            navDrawerOpen: true,
+            navDrawerOpen: false,
             heightContainer: '100px',
             isMobile: false,
         };
         this.showNavBar = this.showNavBar.bind(this);
         this.signOut = this.signOut.bind(this);
         this.updateContentDimensions = this.updateContentDimensions.bind(this);
-        this.openSwagger = this.openSwagger.bind(this);
     }
 
     componentWillMount() {
@@ -37,7 +35,6 @@ class AuthenticatedContentContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.getCountryList();
         ReactTooltip.rebuild();
         window.addEventListener('resize', this.updateContentDimensions);
     }
@@ -60,12 +57,6 @@ class AuthenticatedContentContainer extends Component {
             navDrawerOpen = false;
         }
         this.setState({ heightContainer, navDrawerOpen, isMobile });
-    }
-
-    openSwagger() {
-        const { token } = this.props;
-        const url = `${endpoints.swaggerPath}${token}`;
-        window.open(url);
     }
 
     signOut() {
@@ -117,7 +108,6 @@ class AuthenticatedContentContainer extends Component {
                 styles={styles.header}
                 showNavBar={this.showNavBar}
                 signOut={this.signOut}
-                openSwagger={this.openSwagger}
                 userType={userDashboard.role}
               />
               {leftDrawerContent}
@@ -144,9 +134,7 @@ AuthenticatedContentContainer.defaultProps = {
 
 AuthenticatedContentContainer.propTypes = {
     userDashboard: PropTypes.object.isRequired,
-    token: PropTypes.string.isRequired,
     userLogOut: PropTypes.func.isRequired,
-    getCountryList: PropTypes.func.isRequired,
     currentPage: PropTypes.number.isRequired,
 };
 
@@ -154,7 +142,6 @@ const mapStateToProps = reduxState => {
     return {
         userDashboard: reduxState.userDashboard.dashboard,
         currentPage: reduxState.runtimeSettings.currentPage,
-        token: reduxState.authentication.accessToken,
     };
 };
 
@@ -162,9 +149,6 @@ const mapStateToProps = reduxState => {
 const mapDispatchToProps = dispatch => ({
     userLogOut() {
         dispatch(logOut());
-    },
-    getCountryList() {
-        dispatch(fetchCountryList());
     },
 });
 

@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
-import ReactGA from 'react-ga';
 import AuthContent from './containers/AuthenticatedContentContainer';
 import UnauthContent from './containers/UnauthenticatedContentContainer';
 import Spinner from './components/SpinnerLoader';
@@ -20,7 +19,6 @@ class Gatekeeper extends Component {
         this.state = {
             showSpinner: true,
         };
-        ReactGA.initialize(endpoints.GOOGLE_ANALYTICS_KEY);
     }
 
     componentWillMount() {

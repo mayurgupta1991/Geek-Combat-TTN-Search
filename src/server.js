@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'production') {
 server.get('*', (req, res, next) => {
     const template = ejs.compile(require('./view/index.ejs.js'));
     const data = {
-      title: 'Welcome Systems',
+      title: 'Geek-Combat-TTN-Search',
       entry: assets.index.js,
       vendor: assets.vendor.js,
       stylesheet: assets.index.css,

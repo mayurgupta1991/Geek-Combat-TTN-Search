@@ -6,10 +6,9 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import { FormattedMessage } from 'react-intl';
-import { USER_TYPE } from '../../constants';
 import style from './styles';
 
-function Header({ styles, showNavBar, signOut, openSwagger, userType, history }) {
+function Header({ styles, showNavBar, signOut, history }) {
     return (
       <div>
         <AppBar
@@ -37,14 +36,6 @@ function Header({ styles, showNavBar, signOut, openSwagger, userType, history })
                 targetOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
               >
-                { userType === USER_TYPE.ADMIN || userType === USER_TYPE.OPERATOR ?
-                  (
-                    <MenuItem
-                      primaryText={<FormattedMessage id="apiDemo" />}
-                      onClick={openSwagger}
-                    />
-                  ) : null
-                }
                 <MenuItem
                   primaryText={
                     <FormattedMessage id="signOut" />
@@ -63,8 +54,6 @@ Header.propTypes = {
     styles: PropTypes.object.isRequired,
     showNavBar: PropTypes.func.isRequired,
     signOut: PropTypes.func.isRequired,
-    openSwagger: PropTypes.func.isRequired,
-    userType: PropTypes.string.isRequired,
     history: PropTypes.shape({
         push: PropTypes.func.isRequired,
     }).isRequired,
