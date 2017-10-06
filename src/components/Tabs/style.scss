@@ -1,0 +1,68 @@
+
+
+.tabContainer {
+    min-height: 200px;
+    width: 100%;
+    padding: 0 16px;
+
+    ul.tabOptions {
+        display: inline-block;
+        list-style: none;
+        padding: 0 0 20px 0;
+
+        > li {
+            border-bottom: 2px solid grey;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            padding: 0px 24px 0px 16px;
+            min-width: 150px;
+
+            &.active, &.active:hover {
+                border-bottom: 2px solid orange;
+                > span {
+                    color: blue;
+                }
+            }
+
+            &:hover {
+                border-bottom: 2px solid #ccc;
+            }
+
+            > span {
+                color: grey;
+                cursor: pointer;
+                font-size: 400;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
+                width: 100%;
+            }
+
+            .iconStyle {
+                margin: 0 12px 0 10px;
+
+                > i {
+                    color: grey;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    > span {
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        padding: 0 8px;
+
+        > i {
+            color: grey;
+        }
+
+        &:hover, i:hover {
+            color: blue;
+        }
+    }
+}

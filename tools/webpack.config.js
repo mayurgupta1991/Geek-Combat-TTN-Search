@@ -158,7 +158,7 @@ const clientConfig = extend(true,
     },
     // Choose a developer tool to enhance debugging
     // http://webpack.github.io/docs/configuration.html#devtool
-    devtool: DEBUG ? 'cheap-source-map' : false,
+    devtool: 'eval-source-map',
     devServer: {
       historyApiFallback: {
         rewrites: [{

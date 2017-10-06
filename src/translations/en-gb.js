@@ -11,6 +11,7 @@ const messages = {
     signOut: 'Sign Out',
     dashboard: 'Dashboard',
     'breadCrumbs.dashboard': 'Application / Dashboard',
+    'search.placeholder': 'Search Project',
 
 };
 export default messages;

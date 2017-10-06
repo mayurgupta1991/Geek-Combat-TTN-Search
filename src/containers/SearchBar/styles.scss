@@ -1,0 +1,102 @@
+$sidePadding: 8px;
+$searchBarWidth: 248px;
+$iconWidth: 30px;
+$inputWidth: $searchBarWidth - $iconWidth - ($sidePadding * 2);
+
+$searchBarHeight: 40px;
+
+.searchBar {
+    background-color: grey;
+    border-radius: 3px;
+    color: #fff;
+    float: left;
+    font-size: 14px;
+    height: 50px;
+    margin: 14px 16px 0 0;
+    width: 80%;
+    top: 120px;
+    left: 10%;
+    position: absolute;
+
+    input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 0 8px;
+        width: 202px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    float: right;
+    color: #fff;
+    height: 50px;
+    padding: 0px 18px;
+    font-size: 24px;
+}
+
+.searchResultWrapper {
+    background: #fff;
+    border-bottom: none;
+    /* box-shadow: 0 0 2px 0; */
+    color: grey;
+    width: 100%;
+    min-width: 248px;
+    position: absolute;
+
+    ul:last-child {
+        border-bottom: none;
+    }
+
+    .searchThumbVertical {
+        background: red;
+        border: none;
+        margin-left: -6px;
+    }
+}
+
+.searchResults {
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    & > li {
+        cursor: pointer;
+        color: grey;
+        font-size: 14px;
+        padding: 15px;
+        border-bottom: 1px solid lightgrey;
+    }
+    & > li:hover {
+        background: #F5F5F5;
+        cursor: pointer;
+    }
+
+    & > li:focus {
+        outline: none;
+        background: #F5F5F5;
+        cursor: pointer;
+    }
+}
+
+.filterApplied {
+    margin-left: 5px;
+    visibility: visible;
+}
+
+.notApplied {
+    width: 0;
+    visibility: hidden;
+}
+
+.disableMouseEvent {
+    cursor: not-allowed !important;
+}
