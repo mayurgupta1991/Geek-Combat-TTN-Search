@@ -1,4 +1,4 @@
-import ThemeConfig from '../../themes/themeConfig';
+import { white } from 'material-ui/styles/colors';
 import { headerHeight } from '../../constants';
 
 const styles = {
@@ -7,19 +7,23 @@ const styles = {
         top: 0,
         overflow: 'hidden',
         maxHeight: headerHeight,
+        backgroundColor: white,
     },
     menuButton: {
-        marginLeft: 10,
+        display: 'none',
     },
     iconsRightContainer: {
-        marginLeft: 20,
+        margin: '0 20px',
     },
     tabsScrollbars: {
         overflowX: 'overlay',
         overflowY: 'hidden',
     },
     iconButton: {
-        fill: ThemeConfig.appBarMenuButtonColor,
+        fill: '#18a689',
+    },
+    iconMenuList: {
+        color: 'red',
     },
 };
 

@@ -9,6 +9,7 @@ const messages = {
     apiError: '* Some error occured please try again.',
     login: 'Login',
     signOut: 'Sign Out',
+    addProject: 'Add Project',
     dashboard: 'Dashboard',
     'breadCrumbs.dashboard': 'Application / Dashboard',
     'search.placeholder': 'Search Project',

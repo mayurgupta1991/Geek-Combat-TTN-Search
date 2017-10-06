@@ -1,0 +1,19 @@
+@import '../../styles/color';
+
+.buttonStyles {
+    padding: 0!important;
+    height: 35px !important;
+    width: 35px !important;
+    top: -10px !important;
+    margin-left: 10px !important;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+}
+
+.leftHandStyles {
+    padding: 0!important;
+}

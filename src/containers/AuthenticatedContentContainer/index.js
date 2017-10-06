@@ -7,7 +7,6 @@ import { grey100 } from 'material-ui/styles/colors';
 import ReactTooltip from 'react-tooltip';
 import AWS from 'aws-sdk';
 import Header from '../../components/Header';
-import LeftDrawer from '../../components/LeftDrawer';
 import AdminRoutes from '../RouteManagement/AdminRoutes';
 import GuestRoutes from '../RouteManagement/GuestRoutes';
 import HostRoutes from '../RouteManagement/HostRoutes';
@@ -20,11 +19,8 @@ class AuthenticatedContentContainer extends Component {
     constructor() {
         super();
         this.state = {
-            navDrawerOpen: false,
             heightContainer: '100px',
-            isMobile: false,
         };
-        this.showNavBar = this.showNavBar.bind(this);
         this.signOut = this.signOut.bind(this);
         this.updateContentDimensions = this.updateContentDimensions.bind(this);
     }
@@ -43,20 +39,9 @@ class AuthenticatedContentContainer extends Component {
         window.removeEventListener('resize', this.updateContentDimensions);
     }
 
-    showNavBar() {
-        this.setState({
-            navDrawerOpen: !this.state.navDrawerOpen,
-        });
-    }
-
     updateContentDimensions() {
-        let { navDrawerOpen } = this.state;
         const heightContainer = `${window.innerHeight - headerHeight}px`;
-        const isMobile = window.innerWidth < 768;
-        if (navDrawerOpen && isMobile) {
-            navDrawerOpen = false;
-        }
-        this.setState({ heightContainer, navDrawerOpen, isMobile });
+        this.setState({ heightContainer });
     }
 
     signOut() {
@@ -64,8 +49,8 @@ class AuthenticatedContentContainer extends Component {
     }
 
     render() {
-        const { navDrawerOpen, heightContainer, isMobile } = this.state;
-        const { userDashboard, currentPage } = this.props;
+        const { heightContainer } = this.state;
+        const { userDashboard } = this.props;
 
         if (isEmpty(userDashboard)) {
             return null;
@@ -74,10 +59,9 @@ class AuthenticatedContentContainer extends Component {
           <AdminRoutes /> : (userDashboard.role === USER_TYPE.HOST || userDashboard.role === USER_TYPE.VENDOR) ?
             <HostRoutes /> : <GuestRoutes />;
 
-        const paddingLeftDrawerOpen = 250;
         const styles = {
             header: {
-                paddingLeft: navDrawerOpen ? paddingLeftDrawerOpen : 0,
+                paddingLeft: 0,
             },
             container: {
                 backgroundColor: grey100,
@@ -85,7 +69,7 @@ class AuthenticatedContentContainer extends Component {
                 paddingTop: 23,
                 paddingRight: 20,
                 paddingBottom: 20,
-                paddingLeft: (navDrawerOpen && (window.innerWidth > 768)) ? paddingLeftDrawerOpen : 20,
+                paddingLeft: 20,
                 minHeight: heightContainer,
             },
         };
@@ -95,9 +79,8 @@ class AuthenticatedContentContainer extends Component {
             <div>
               <Header
                 styles={styles.header}
-                showNavBar={this.showNavBar}
                 signOut={this.signOut}
-                userType={userDashboard.role}
+                profilepicurl={userDashboard.profilepicurl}
               />
               <div className={classes.mainContainer} style={styles.container}>
                 <ReactCSSTransitionGroup
@@ -123,13 +106,11 @@ AuthenticatedContentContainer.defaultProps = {
 AuthenticatedContentContainer.propTypes = {
     userDashboard: PropTypes.object.isRequired,
     userLogOut: PropTypes.func.isRequired,
-    currentPage: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = reduxState => {
     return {
         userDashboard: reduxState.userDashboard.dashboard,
-        currentPage: reduxState.runtimeSettings.currentPage,
     };
 };
 
