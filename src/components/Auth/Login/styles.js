@@ -25,7 +25,6 @@ const styles = {
     },
     paper: {
         padding: 0,
-        overflow: 'auto',
     },
     buttonsDiv: {
         textAlign: 'center',

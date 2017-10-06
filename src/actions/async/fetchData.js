@@ -31,7 +31,8 @@ export function verifyUser(data) {
         });
 }
 
-export function fetchUserAndLoadData(url) {
+export function fetchUserAndLoadData() {
+    const url = endpoints.userInfoPath;
     return (dispatch, getState) => fetchWebApi(getAccessToken(getState), url).request
         .then(response => {
             dispatch(userDashboard(response.data));

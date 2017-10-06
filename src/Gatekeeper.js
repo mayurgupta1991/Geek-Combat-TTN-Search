@@ -8,7 +8,6 @@ import { getUserStorage, getCookieUrl } from './util/browserStorage';
 import { tokenGenerator } from './actions/configSettings';
 import { fetchUserAndLoadData } from './actions/async/fetchData';
 import { changeDashboardLoadingStatus, setEnableCookieUrl } from './actions/common';
-import endpoints from './endpoints/authentication';
 
 // This class is always rendered and decides whether we need a login
 // page or to grant app access.
@@ -36,9 +35,8 @@ class Gatekeeper extends Component {
     componentWillReceiveProps(nextProps) {
         const { isUserLoggedIn, isDashboardLoading } = nextProps;
         if (isUserLoggedIn && isDashboardLoading) {
-            const url = endpoints.userInfoPath;
             this.setState({ showSpinner: true });
-            this.props.fetchUserData(url).then(() => {
+            this.props.fetchUserData().then(() => {
                 this.props.changeDashboardState({ status: false });
                 this.setState({ showSpinner: false });
             });
@@ -86,8 +84,8 @@ const mapDispatchToProps = dispatch => ({
     changeDashboardState(loadingStatus) {
         dispatch(changeDashboardLoadingStatus(loadingStatus));
     },
-    fetchUserData(url) {
-        return dispatch(fetchUserAndLoadData(url));
+    fetchUserData() {
+        return dispatch(fetchUserAndLoadData());
     },
 });
 

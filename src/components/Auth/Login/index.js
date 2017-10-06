@@ -92,19 +92,17 @@ class Login extends Component {
               { loadingIndicator }
               <Paper style={styles.paper}>
                 <div className={classes.logoContainer} />
-                <div className={classes.buttonsDiv}>
                   <div className={googleBtnClass}>
-                    <i className="fa fa-google-plus fa-lg" />
-                    <FormattedMessage id="login" />
-                    <GoogleLogin
-                      clientId={endpoints.GOOGLE_CLIENT_ID}
-                      className={classes.hideButton}
-                      autoLoad={false}
-                      onSuccess={this.responseGoogle}
-                      onFailure={this.showGoogleApiError}
-                    />
+                      <i className="fa fa-google-plus fa-lg" />
+                      <FormattedMessage id="login" />
+                      <GoogleLogin
+                          clientId={endpoints.GOOGLE_CLIENT_ID}
+                          className={classes.hideButton}
+                          autoLoad={false}
+                          onSuccess={this.responseGoogle}
+                          onFailure={this.showGoogleApiError}
+                      />
                   </div>
-                </div>
                 {
                     showAuthenticateError ? (
                       <div className={classes.authFailContainer}>
