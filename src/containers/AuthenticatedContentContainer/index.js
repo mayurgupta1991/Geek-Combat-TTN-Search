@@ -90,17 +90,6 @@ class AuthenticatedContentContainer extends Component {
             },
         };
 
-        const leftDrawerContent = (currentPage > -1) ?
-          (
-            <LeftDrawer
-              navDrawerOpen={navDrawerOpen}
-              userDashboard={userDashboard}
-              currentPage={currentPage}
-              showHamburger={isMobile}
-              onSelectedIndexChanged={this.updateContentDimensions}
-            />
-          ) : null;
-
         return (
           <BrowserRouter>
             <div>
@@ -110,7 +99,6 @@ class AuthenticatedContentContainer extends Component {
                 signOut={this.signOut}
                 userType={userDashboard.role}
               />
-              {leftDrawerContent}
               <div className={classes.mainContainer} style={styles.container}>
                 <ReactCSSTransitionGroup
                   transitionName=""
