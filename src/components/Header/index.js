@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import { withRouter } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
+import { IconButton, IconMenu, MenuItem, FontIcon } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 import classes from './styles.scss';
 import style from './styles';
 
-function Header({ styles, signOut, history }) {
+function Header({ styles, signOut, profilepicurl, history }) {
     return (
         <div>
             <AppBar
@@ -16,15 +16,40 @@ function Header({ styles, signOut, history }) {
           }
                 iconElementRight={
             <div style={style.iconsRightContainer}>
-                <div
-                    className={classes.logoutButton}
-                    onClick={() => { history.push('/'); signOut(); }}
-                >
-                    <i className="material-icons">
-                        input
-                    </i>
+              <IconMenu
+                color={style.iconButton.fill}
+                iconButtonElement={
+                  <IconButton className={classes.leftHandStyles}>
+                      <FontIcon color={style.iconButton.fill} className="material-icons">
+                          settings
+                        </FontIcon>
+                  </IconButton>
+                }
+                targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+              >
+                <MenuItem
+                  primaryText={
+                    <FormattedMessage id="addProject" />
+                  }
+                />
+              </IconMenu>
+              <IconMenu
+                iconButtonElement={
+                  <IconButton className={classes.buttonStyles}>
+                    <img src={profilepicurl} />
+                  </IconButton>
+                }
+                targetOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+              >
+                <MenuItem
+                  primaryText={
                     <FormattedMessage id="signOut" />
-                </div>
+                  }
+                  onClick={() => { history.push('/'); signOut(); }}
+                />
+              </IconMenu>
             </div>
           }
             />
@@ -35,6 +60,7 @@ function Header({ styles, signOut, history }) {
 Header.propTypes = {
     styles: PropTypes.object.isRequired,
     signOut: PropTypes.func.isRequired,
+    profilepicurl: PropTypes.string.isRequired,
     history: PropTypes.shape({
         push: PropTypes.func.isRequired,
     }).isRequired,

@@ -20,7 +20,6 @@ class AuthenticatedContentContainer extends Component {
         super();
         this.state = {
             heightContainer: '100px',
-            isMobile: false,
         };
         this.signOut = this.signOut.bind(this);
         this.updateContentDimensions = this.updateContentDimensions.bind(this);
@@ -42,8 +41,7 @@ class AuthenticatedContentContainer extends Component {
 
     updateContentDimensions() {
         const heightContainer = `${window.innerHeight - headerHeight}px`;
-        const isMobile = window.innerWidth < 768;
-        this.setState({ heightContainer, isMobile });
+        this.setState({ heightContainer });
     }
 
     signOut() {
@@ -51,7 +49,7 @@ class AuthenticatedContentContainer extends Component {
     }
 
     render() {
-        const { heightContainer, isMobile } = this.state;
+        const { heightContainer } = this.state;
         const { userDashboard } = this.props;
 
         if (isEmpty(userDashboard)) {
@@ -82,7 +80,7 @@ class AuthenticatedContentContainer extends Component {
               <Header
                 styles={styles.header}
                 signOut={this.signOut}
-                userType={userDashboard.role}
+                profilepicurl={userDashboard.profilepicurl}
               />
               <div className={classes.mainContainer} style={styles.container}>
                 <ReactCSSTransitionGroup
