@@ -177,7 +177,7 @@ class SearchBar extends Component {
     handleClickOutside() {
         this.setState({
             value: '',
-            isSearchResultVisible: this.state.isSearchResultVisible,
+            isSearchResultVisible: this.state.isSearchResultVisible && !this.state.isSearchResultVisible,
         });
     }
 
