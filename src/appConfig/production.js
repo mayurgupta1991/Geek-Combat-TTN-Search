@@ -1,7 +1,7 @@
 export default {
     BASE: 'https://api.welcome.systems/api/v1/',
     AUTH: 'https://api.welcome.systems/',
-    GOOGLE_CLIENT_ID: '1057008206315-trnt2fvnghacqpt3apo8tiusm2j02554.apps.googleusercontent.com',
+    GOOGLE_CLIENT_ID: '12000940573-4930rbpcimqnctgpj5hfkodhsgort3t8.apps.googleusercontent.com',
     COOKIE_EXPIRY_TIME: 60 * 60 * 12 * 1,
     AWS_CONFIG: {
         region: 'us-west-1',

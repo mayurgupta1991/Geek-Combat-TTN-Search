@@ -25,7 +25,6 @@ class Login extends Component {
         this.handleResponse = this.handleResponse.bind(this);
         this.responseGoogle = this.responseGoogle.bind(this);
         this.showGoogleApiError = this.showGoogleApiError.bind(this);
-        console.log('adasddas',endpoints.GOOGLE_CLIENT_ID);
     }
 
     handleResponse(response, errorText) {
