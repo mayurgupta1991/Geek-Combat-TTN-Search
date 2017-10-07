@@ -39,6 +39,7 @@ function Header({ styles, signOut, profilepicurl, history }) {
                   primaryText={
                     <FormattedMessage id="addProject" />
                   }
+                  onClick={() => { history.push('/addProject'); }}
                 />
               </IconMenu>
               <IconMenu

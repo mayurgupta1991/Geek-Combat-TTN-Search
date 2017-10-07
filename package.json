@@ -132,6 +132,7 @@
     "react-intl": "2.2.2",
     "react-intl-redux": "0.3.0",
     "react-redux": "4.4.5",
+    "react-redux-form": "^1.14.2",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-tag-autocomplete": "^5.4.1",
