@@ -7,8 +7,25 @@ import pickBy from 'lodash/pickBy';
 import { FormattedMessage } from 'react-intl';
 import classes from './style.scss';
 import AutoComplete from '../AutoComplete';
+import CheckBoxWrapper from '../CheckBoxWrapper';
 
 class Filters extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filtersSelected: {},
+        };
+        this.setFilters = this.setFilters.bind(this);
+    }
+
+    setFilters(filters, type) {
+        const newFilters = this.state.filtersSelected;
+        newFilters[type] = filters;
+        this.setState({ filtersSelected: newFilters }, () => {
+          console.log("asdklaugdasdadaduasd", this.state.filtersSelected);
+        });
+    }
+
     render() {
         const filters = [
           {
@@ -60,6 +77,19 @@ class Filters extends Component {
                 name: 'CS',
               }
             ]
+          },
+          {
+            type: 'businessType',
+            values: [
+                {
+                  id: '1',
+                  name: 'B2B',
+                },
+                {
+                  id: '2',
+                  name: 'B2C',
+                },
+            ]
           }
         ];
         return (
@@ -68,7 +98,9 @@ class Filters extends Component {
                 <div className={ classes.categoryWrapper }>
                     { filters.map(filter => {
                           return (
-                            <AutoComplete filterData={ filter } />
+                              filter.type !== 'businessType'
+                                ? <AutoComplete filterData={ filter } onChange={ this.setFilters } />
+                                : <CheckBoxWrapper filterData={ filter } onChange={ this.setFilters } />
                           )
 
                       })

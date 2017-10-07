@@ -1,43 +1,56 @@
 import React, { Component } from  'react';
-import ReactTags from 'react-tag-autocomplete';
+import Checkbox from 'material-ui/Checkbox';
+import c from 'classnames';
+import capitalize from 'lodash/capitalize';
+import styles from './style.scss';
 
 export default class CheckBoxWrapper extends Component {
     constructor (props) {
       super(props)
-
       this.state = {
-        tags: [
-          { id: 1, name: "Apples" },
-          { id: 2, name: "Pears" }
-        ],
-        suggestions: [
-          { id: 3, name: "Bananas" },
-          { id: 4, name: "Mangos" },
-          { id: 5, name: "Lemons" },
-          { id: 6, name: "Apricots" }
-        ]
-      }
+          activeCheckboxes: [],
+          isExpanded: true,
+      };
     }
 
-    handleDelete (i) {
-      const tags = this.state.tags.slice(0)
-      tags.splice(i, 1)
-      this.setState({ tags })
+    handleCheck(event, isInputchecked, id, type) {
+      this.setState({
+          activeCheckboxes: isInputchecked
+            ? this.state.activeCheckboxes.filter(x => x !== id)
+            : [ ...this.state.activeCheckboxes, id ]
+      }, () => {
+          this.props.onChange(this.state.activeCheckboxes, type);
+      });
     }
 
-    handleAddition (tag) {
-      const tags = [].concat(this.state.tags, tag)
-      this.setState({ tags })
+    toggle() {
+      this.setState({ isExpanded: !this.state.isExpanded });
     }
 
-    render () {
+    render() {
+        const { filterData } = this.props
+        const className = c('material-icons', styles.iconStyle);
         return (
-            <ReactTags
-                tags={this.state.tags}
-                suggestions={this.state.suggestions}
-                handleDelete={this.handleDelete.bind(this)}
-                handleAddition={this.handleAddition.bind(this)}
-            />
+            <div>
+              <span> { capitalize(filterData.type) }: </span>
+              { this.state.isExpanded
+                  ? <i className={ className } onClick={ () => this.toggle() }>keyboard_arrow_up</i>
+                  : <i className={ className } onClick={ () => this.toggle() }>keyboard_arrow_down</i>
+              }
+              { this.state.isExpanded
+                  ? filterData.values.map(checkbox => {
+                      return (
+                          <Checkbox
+                              key={ checkbox.id }
+                              label={checkbox.name}
+                              onCheck={(event, isInputchecked) => this.handleCheck(event, isInputchecked, checkbox.id, filterData.type)}
+                              checked={ this.state.activeCheckboxes.includes(checkbox.id) }
+                           />
+                      )
+                  })
+                  : null
+              }
+            </div>
         )
     }
 }
