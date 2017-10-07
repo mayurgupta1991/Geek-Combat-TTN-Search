@@ -159,7 +159,7 @@ class SearchBar extends Component {
 
     onInputChange(value) {
         value && this.setState({ value }, () => {
-            this.props.setSearch(value);
+            value.length >= 3 && this.props.setSearch(value);
         }) || this.setState({ matchedResult: [], value });
     }
 
