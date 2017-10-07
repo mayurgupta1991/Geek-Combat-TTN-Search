@@ -22,9 +22,10 @@
 }
 
 .authFailContainer {
-  float:left;
-  width: 100%;
-  margin-top: 20px;
+    position: absolute;
+    width: 400px;
+    margin-top: 50px;
+    left: -115px;
 
   p {
     font-size: 16px;
