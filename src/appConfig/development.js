@@ -20,4 +20,4 @@ export default {
 // http://welcome-api.qa3.tothenew.net
 
 // prod url
-// https://api.welcome.systems
+// https://api.welcome.systems 12000940573-4930rbpcimqnctgpj5hfkodhsgort3t8.apps.googleusercontent.com
