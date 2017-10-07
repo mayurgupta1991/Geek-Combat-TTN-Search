@@ -52,37 +52,45 @@ export function fetchSearchResult() {
       .then(response => {
           const data = {
               1: {
-                  name: 'Company 1',
-                  desc: 'BLAHHH BLAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-1/p24x24/13592799_1361299897219221_6628637694680721779_n.jpg?oh=a2dae952a8fb43da52dbf4ca4f1b6b5f&oe=5A3CEE00',
               },
               2: {
-                  name: 'Company 2',
-                  desc: 'BLAHHH BLAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
               },
               3: {
-                  name: 'Company 3',
-                  desc: 'BLAHHH BAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
               },
               4: {
-                  name: 'Company 4',
-                  desc: 'BLAHHH BLAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
               },
               5: {
-                  name: 'Company 5',
-                  desc: 'BLAHHH BLAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
               },
               6: {
-                  name: 'Company 5',
-                  desc: 'BLAHHH BLAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
               },
               7: {
-                  name: 'Company 5',
-                  desc: 'BLAHHH BLAHHH BLAHH'
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
               },
               8: {
-                  name: 'Company 5',
-                  desc: 'BLAHHH BLAHHH BLAHH'
-              }
+                  name: 'google',
+                  desc: 'Company',
+                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
+              },
           };
           dispatch(setSearchResult(data));
           return response;

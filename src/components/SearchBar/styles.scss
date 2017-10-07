@@ -43,12 +43,12 @@
     background: $white;
     color: grey;
     width: 100%;
-    min-width: 248px;
     position: absolute;
     top: 54px;
     border-radius: 4px;
-    max-height: 360px;
+    max-height: 300px;
     overflow-y: auto;
+    box-shadow: -1px 2px 21px 0 rgba(143,139,167,.27);
 
     .searchThumbVertical {
         background: red;
@@ -58,18 +58,51 @@
 }
 
 .searchResults {
-    cursor: pointer;
     list-style-type: none;
     padding: 0;
     margin: 0;
     & > li {
         cursor: pointer;
-        color: grey;
-        font-size: 14px;
-        padding: 15px;
-        border-bottom: 1px solid lightgrey;
+        padding: 8px 0 0 45px;
+        position: relative;
+
+        &:active {
+            outline: none;
+        }
+
+        img {
+            position: absolute;
+            max-width: 30px;
+            left: 8px;
+            top: 16px;
+            border-radius: 50%;
+        }
+        div {
+            border-bottom: 1px solid $greyLight500;
+            padding-bottom: 8px;
+            padding-right: 20px;
+            h3 {
+                font-size: 18px;
+                font-weight: 500;
+                color: rgba(0,0,0,.85);
+                text-transform: capitalize;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            p {
+                font-size: 16px;
+                color: $greyLight;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+
         &:last-child {
-            border-bottom: none;
+            div {
+                border-bottom: 0;
+            }
         }
     }
 }

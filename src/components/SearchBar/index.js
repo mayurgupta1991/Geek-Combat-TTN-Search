@@ -198,8 +198,11 @@ class SearchBar extends Component {
                                         tabIndex='0'
                                         onClick={ () => this.performSearch(listItem.name) }
                                       >
+                                          <img src={listItem.src} />
+                                          <div>
                                             <h3> { listItem.name } </h3>
                                             <p> { listItem.desc } </p>
+                                          </div>
                                       </li>
                                      )
                                 })
