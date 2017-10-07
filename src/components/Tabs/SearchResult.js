@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import c from 'classnames';
 import uniqueId from 'lodash/uniqueId';
@@ -9,6 +10,14 @@ import classes from './style.scss';
 import NoResultFound from '../../components/SearchResultPage/NoResultFound';
 
 class SearchResult extends Component {
+    constructor(props) {
+        super(props);
+        this.goToDetailsPage = this.goToDetailsPage.bind(this);
+    }
+    goToDetailsPage(queryParam) {
+        this.props.history.push(`./details/${queryParam}`);
+    }
+
   render() {
     const { content } = this.props;
       return (
@@ -20,7 +29,7 @@ class SearchResult extends Component {
                           <li
                               key={ index }
                               tabIndex='0'
-                              onClick={ () => this.performSearch(listItem.name) }
+                              onClick={ () => this.goToDetailsPage(listItem.name) }
                           >
                               <div className={ classes.searchResultImageWrapper }>
                                   <figure>

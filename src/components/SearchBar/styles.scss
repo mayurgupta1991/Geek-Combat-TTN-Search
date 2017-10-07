@@ -49,6 +49,7 @@
     max-height: 300px;
     overflow-y: auto;
     box-shadow: -1px 2px 21px 0 rgba(143,139,167,.27);
+    z-index: 1;
 
     .searchThumbVertical {
         background: red;

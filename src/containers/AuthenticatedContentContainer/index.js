@@ -65,11 +65,8 @@ class AuthenticatedContentContainer extends Component {
             },
             container: {
                 backgroundColor: grey100,
-                margin: '57px 0px 0px 0px',
-                paddingTop: 23,
-                paddingRight: 20,
-                paddingBottom: 20,
-                paddingLeft: 20,
+                margin: '50px 0px 0px 0px',
+                padding: 0,
                 minHeight: heightContainer,
             },
         };

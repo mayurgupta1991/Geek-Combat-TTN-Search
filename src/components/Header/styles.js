@@ -5,6 +5,7 @@ const styles = {
     appBar: {
         position: 'fixed',
         top: 0,
+        left: 0,
         overflow: 'hidden',
         maxHeight: headerHeight,
         backgroundColor: '#283e4a',

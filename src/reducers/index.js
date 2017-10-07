@@ -5,6 +5,7 @@ import authentication from './authentication';
 import userDashboard from './userDashboard';
 import dashboardUiStatus from './dashboardUiStatus';
 import search from './search';
+import details from './details';
 
 const rootReducer = combineReducers({
     intl: intlReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     userDashboard,
     dashboardUiStatus,
     search,
+    details,
 });
 
 export default rootReducer;
