@@ -29,7 +29,7 @@ class SearchResult extends Component {
                           <li
                               key={ index }
                               tabIndex='0'
-                              onClick={ () => this.goToDetailsPage(listItem.name) }
+                              onClick={ () => this.goToDetailsPage(listItem.desc) }
                           >
                               <div className={ classes.searchResultImageWrapper }>
                                   <figure>
@@ -52,12 +52,16 @@ class SearchResult extends Component {
   }
 }
 
-SearchResult.defaultProps = {
-  content: [],
+SearchResult.contextTypes = {
+    router: PropTypes.object,
 };
 
 SearchResult.propTypes = {
     content: PropTypes.array,
+    history: React.PropTypes.shape({
+        push: React.PropTypes.func.isRequired,
+    }).isRequired,
 };
 
-export default SearchResult;
+
+export default withRouter(SearchResult);
