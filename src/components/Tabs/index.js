@@ -5,25 +5,82 @@ import c from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import pickBy from 'lodash/pickBy';
 import { FormattedMessage } from 'react-intl';
+import SearchResult from './SearchResult';
 import classes from './style.scss';
+
+const dummyTabs = [
+    {
+        identifier: 1,
+        label: 'asdadasda',
+        content: [
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+            },
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+            },
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+            },
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+            },
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+            }
+        ],
+    },
+    {
+        identifier: 2,
+        label: 'asdadasda',
+        content: [],
+    },
+    {
+        identifier: 3,
+        label: 'asdadasda',
+        content: [
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM1111111111111111111111111',
+            }
+        ],
+    },
+    {
+        identifier: 4,
+        label: 'asdadasda',
+        content: [
+            {
+                name: 'AAAAAAAAAAAAAAAAAA',
+                desc: 'MMMMMMMMMMMMMMMMMM2222222222222222222222222222',
+            }
+        ],
+    },
+];
 
 class Tabs extends Component {
     constructor() {
         super();
         this.state = {
             isOpen: false,
-            activeTabId: '',
+            activeTabId: dummyTabs[0].identifier,
         };
     }
 
-    getHighlightedTabName(activeTabId) {
-        return this.props.tabList.find(tab => tab.identifier === activeTabId).name;
+    switchTab(identifier) {
+        this.setState({ isOpen: false, activeTabId: identifier, content: this.getActiveTabContent(dummyTabs, identifier) });
     }
 
-    switchTab(idx) {
-        this.setState({ isOpen: false, activeTabId: idx }, () => {
-            //this.props.setActiveTabId(idx);
-        });
+    componentDidMount() {
+        this.setState({ activeTabId: dummyTabs[0].identifier, content: this.getActiveTabContent(dummyTabs, dummyTabs[0].identifier) });
+    }
+
+    getActiveTabContent(tabs, identifier) {
+        return tabs.find(tab => tab.identifier === identifier).content;
     }
 
     showTabs(tabList) {
@@ -44,25 +101,6 @@ class Tabs extends Component {
     }
 
     render() {
-        const { content, activeTab } = this.props;
-        const dummyTabs = [
-            {
-                identifier: 1,
-                label: 'asdadasda',
-            },
-            {
-                identifier: 2,
-                label: 'asdadasda',
-            },
-            {
-                identifier: 3,
-                label: 'asdadasda',
-            },
-            {
-                identifier: 4,
-                label: 'asdadasda',
-            },
-        ]
         const tabs = this.showTabs(dummyTabs);
         return (
           tabs.length
@@ -70,6 +108,9 @@ class Tabs extends Component {
                 <ul className={ classes.tabOptions }>
                     { tabs }
                 </ul>
+                <div className='row'>
+                   <SearchResult content={ this.state.content } />
+                </div>
             </div>
             : null
         );

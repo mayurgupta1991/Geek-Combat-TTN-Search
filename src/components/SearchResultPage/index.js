@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import SearchBar from '../../containers/SearchBar';
 import Tabs from '../Tabs';
+import Filters from '../Filters';
 import classes from './styles.scss';
 
 class SearchResultPage extends Component {
@@ -11,8 +11,9 @@ class SearchResultPage extends Component {
 
     render() {
         return (
-          <div>
+          <div className={ classes.srpWrapper }>
             <Tabs />
+            <Filters />
           </div>
         );
     }

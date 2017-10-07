@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import SearchBar from '../../containers/SearchBar';
+import SearchBar from '../../components/SearchBar';
 import classes from './styles.scss';
 
 class LandingPage extends Component {
