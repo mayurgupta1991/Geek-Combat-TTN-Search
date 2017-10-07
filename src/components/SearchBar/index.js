@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import c from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import enhanceWithClickOutside from 'react-click-outside';
 import classes from './styles.scss';
 import { setSearch } from '../../actions/search';
 import { fetchSearchResult } from '../../actions/async/fetchData';
@@ -27,6 +28,10 @@ class SearchBar extends Component {
     componentWillMount() {
         const data = Object.values(this.props.searchList).map(value => value);
         this.setState({ matchedResult: data });
+    }
+
+    componentWillUnmount() {
+        this.setState({ value: '', isSearchResultVisible: false });
     }
 
     componentWillReceiveProps(newProps) {
@@ -164,13 +169,24 @@ class SearchBar extends Component {
     }
 
     performSearch(searchId) {
-        this.props.history.push(`./${searchId}`);
+        this.setState({ isSearchResultVisible: false }, () => {
+            this.props.history.push(`./${searchId}`);
+        })
+    }
+
+    handleClickOutside() {
+        this.setState({
+            value: '',
+            isSearchResultVisible: this.state.isSearchResultVisible && !this.state.isSearchResultVisible,
+        });
     }
 
     render() {
         this.listCounter = -1;
         const className = c(classes.searchBar, this.props.className);
         const placeholder = this.props.intl.formatMessage({ id: 'search.placeholder' });
+        const { isSearchResultVisible } = this.state;
+
         return (
             <div className={ className }>
                 <div className={ classes.inputWrapper }>
@@ -190,7 +206,7 @@ class SearchBar extends Component {
                     </i>
                 </button>
                 {
-                    <div className={ classes.searchResultWrapper }>
+                    <div className={ c(classes.searchResultWrapper, { [classes.hideResult]: !isSearchResultVisible }) }>
                         <ul className={ classes.searchResults }>
                             { this.state.matchedResult.map((listItem, index) => {
                                     return (
@@ -257,6 +273,6 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(withRouter(SearchBar)));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(withRouter(enhanceWithClickOutside(SearchBar))));
 
 export { SearchBar as SearchBarComponent };
