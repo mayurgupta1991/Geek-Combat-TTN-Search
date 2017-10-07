@@ -1,0 +1,11 @@
+.filterWrapper {
+    width: 25%;
+}
+
+.categoryWrapper {
+    > div {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid grey;
+    }
+}

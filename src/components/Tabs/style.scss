@@ -2,8 +2,9 @@
 
 .tabContainer {
     min-height: 200px;
-    width: 100%;
+    width: 70%;
     padding: 0 16px;
+    margin-right: 10px;
 
     ul.tabOptions {
         display: inline-block;
@@ -63,6 +64,30 @@
 
         &:hover, i:hover {
             color: blue;
+        }
+    }
+}
+
+.searchResultWrapper {
+    width: 100%;
+
+    .searchResults {
+        margin: 0;
+        padding: 0;
+
+        .snapshot {
+            width: 90%;
+            display: inline-block;
+        }
+
+        li {
+            display: flex;
+            list-style-type: none;
+            border-bottom: 1px solid lightgrey;
+            margin-right: 20px;
+            margin-left: 20px;
+            padding-bottom: 5px;
+            padding-top: 5px;
         }
     }
 }
