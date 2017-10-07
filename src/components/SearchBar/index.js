@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import c from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import classes from './styles.scss';
@@ -168,9 +169,10 @@ class SearchBar extends Component {
 
     render() {
         this.listCounter = -1;
+        const className = c(classes.searchBar, this.props.className);
         const placeholder = this.props.intl.formatMessage({ id: 'search.placeholder' });
         return (
-            <div className={ classes.searchBar }>
+            <div className={ className }>
                 <div className={ classes.inputWrapper }>
                     <input
                         ref={ (element) => { this.searchBox = element; } }

@@ -38,3 +38,4 @@ export const headerHeight = 57;
 export const SEARCH_DROPDOWN_HEIGHT = 320;
 export const SEARCHRESULT_HEIGHT = 32;
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT';
+export const SET_DETAILS = 'SET_DETAILS';

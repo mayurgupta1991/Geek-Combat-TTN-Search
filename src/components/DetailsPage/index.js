@@ -47,7 +47,7 @@ DetailsPage.propTypes = {
 
 function mapStateToProps(reduxState) {
     return {
-        reduxState: reduxState,
+        details: reduxState.details,
     }
 }
 
