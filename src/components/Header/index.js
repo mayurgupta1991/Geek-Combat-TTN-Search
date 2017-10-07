@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import { IconButton, IconMenu, MenuItem, FontIcon } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
+import LinkItem from '../LinkItem';
 import classes from './styles.scss';
 import style from './styles';
 
@@ -12,7 +13,13 @@ function Header({ styles, signOut, profilepicurl, history }) {
             <AppBar
                 style={{ ...styles, ...style.appBar }}
                 iconElementLeft={
-            <IconButton style={style.menuButton} />
+            <IconButton
+              style={style.menuButton}
+            >
+              <LinkItem to={'/'} linkClass={classes.headerLogo}>
+                  <img src={require('../../public/logoSmall.png')} alt="TTN" />
+                </LinkItem>
+            </IconButton>
           }
                 iconElementRight={
             <div style={style.iconsRightContainer}>

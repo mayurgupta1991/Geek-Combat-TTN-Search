@@ -7,10 +7,12 @@ const styles = {
         top: 0,
         overflow: 'hidden',
         maxHeight: headerHeight,
-        backgroundColor: white,
+        backgroundColor: '#283e4a',
     },
     menuButton: {
-        display: 'none',
+        width: 'inherit',
+        height: 'inherit',
+        padding: 0,
     },
     iconsRightContainer: {
         margin: '0 20px',
@@ -20,10 +22,7 @@ const styles = {
         overflowY: 'hidden',
     },
     iconButton: {
-        fill: '#18a689',
-    },
-    iconMenuList: {
-        color: 'red',
+        fill: white,
     },
 };
 

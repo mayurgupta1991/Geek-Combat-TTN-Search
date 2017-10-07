@@ -70,6 +70,18 @@ export function fetchSearchResult() {
               5: {
                   name: 'Company 5',
                   desc: 'BLAHHH BLAHHH BLAHH'
+              },
+              6: {
+                  name: 'Company 5',
+                  desc: 'BLAHHH BLAHHH BLAHH'
+              },
+              7: {
+                  name: 'Company 5',
+                  desc: 'BLAHHH BLAHHH BLAHH'
+              },
+              8: {
+                  name: 'Company 5',
+                  desc: 'BLAHHH BLAHHH BLAHH'
               }
           };
           dispatch(setSearchResult(data));

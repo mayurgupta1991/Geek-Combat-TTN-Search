@@ -12,7 +12,6 @@ class SearchResultPage extends Component {
     render() {
         return (
           <div>
-            aksjdhalksjdhl
             <Tabs />
           </div>
         );
