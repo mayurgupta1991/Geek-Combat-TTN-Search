@@ -46,53 +46,11 @@ export function fetchUserAndLoadData() {
         });
 }
 
-export function fetchSearchResult() {
-    const url = endpoints.userInfoPath;
-    return (dispatch, getState) => fetchWebApi(getAccessToken(getState), url).request
+export function fetchSearchResult(searchQuery) {
+    const url = endpoints.autoComplete + searchQuery;
+    return (dispatch, getState) => fetchWebApi('', url).request
       .then(response => {
-          const data = {
-              1: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-1/p24x24/13592799_1361299897219221_6628637694680721779_n.jpg?oh=a2dae952a8fb43da52dbf4ca4f1b6b5f&oe=5A3CEE00',
-              },
-              2: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-              3: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-              4: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-              5: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-              6: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-              7: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-              8: {
-                  name: 'google',
-                  desc: 'Company',
-                  src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAALTAAAAJGY1NGY1N2ZhLTNmZmUtNGRmZi1iMDgxLTJjZjdkNjNkYmZlOQ.png',
-              },
-          };
-          dispatch(setSearchResult(data));
+          dispatch(setSearchResult(response.data));
           return response;
       })
       .catch(error => {

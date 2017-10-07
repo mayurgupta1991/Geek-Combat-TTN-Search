@@ -11,4 +11,5 @@ export const apiUrl = {
     authentication: 'auth',
     GPLUS_AUTH: 'social/gplus/auth',
     getUserInfo: 'user',
+    urlBase: 'http://10.1.13.249:6060',
 };
