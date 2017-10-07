@@ -9,7 +9,7 @@ function setSearchResult(state, { data }) {
 }
 
 
-export default function search(state = { result: {} }, action = {}) {
+export default function search(state = { result: [] }, action = {}) {
   deepFreeze(state);
   deepFreeze(action);
 

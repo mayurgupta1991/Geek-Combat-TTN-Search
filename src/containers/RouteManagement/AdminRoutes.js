@@ -11,7 +11,7 @@ export default function AdminRoutes() {
         <Switch>
             <Route exact path="/addProject" component={AddProject} />
             <Route exact path="/details/:id" component={DetailsPage} />
-            <Route exact path="/:id" component={SearchResultPage} />
+            <Route exact path="/search/:id" component={SearchResultPage} />
             <Route exact path="/" component={LandingPage} />
             <Route component={NoMatch} />
         </Switch>

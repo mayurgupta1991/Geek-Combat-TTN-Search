@@ -15,7 +15,7 @@ class SearchResult extends Component {
         this.goToDetailsPage = this.goToDetailsPage.bind(this);
     }
     goToDetailsPage(queryParam) {
-        this.props.history.push(`./details/${queryParam}`);
+        this.props.history.push(`/details/${queryParam}`);
     }
 
   render() {

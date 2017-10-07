@@ -48,15 +48,16 @@ export function fetchUserAndLoadData() {
 
 export function fetchSearchResult(searchQuery) {
     const url = endpoints.autoComplete + searchQuery;
-    return (dispatch, getState) => fetchWebApi('', url).request
+    return (dispatch, getState) => fetchWebApi(getAccessToken(getState), url).request
       .then(response => {
-          dispatch(setSearchResult(response.data));
+          dispatch(setSearchResult(response.data.data));
           return response;
       })
       .catch(error => {
-          removeUserStorage();
+            console.log(error);
+          /*removeUserStorage();
           dispatch(terminateSession());
-          return error;
+          return error;*/
       });
 }
 

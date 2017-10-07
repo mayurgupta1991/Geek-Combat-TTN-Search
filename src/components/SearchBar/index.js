@@ -5,6 +5,7 @@ import c from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import enhanceWithClickOutside from 'react-click-outside';
+import trim from 'lodash/trim';
 import classes from './styles.scss';
 import { setSearch } from '../../actions/search';
 import { fetchSearchResult } from '../../actions/async/fetchData';
@@ -26,25 +27,29 @@ class SearchBar extends Component {
     }
 
     componentWillMount() {
-        const data = Object.values(this.props.searchList).map(value => value);
-        this.setState({ matchedResult: data });
+        this.setState({ matchedResult: this.props.searchList });
     }
 
     componentWillUnmount() {
-        this.setState({ value: '', isSearchResultVisible: false });
+        this.setState({ isSearchResultVisible: false });
     }
 
     componentWillReceiveProps(newProps) {
-        const data = Object.values(newProps.searchList).map(value => value);
-        this.setState({ matchedResult: data });
+        this.setState({ matchedResult: newProps.searchList, isSearchResultVisible: true });
     }
 
-    onKeyPress(key) {
-        if (key === 'Enter') this.setState({ value: '', isSearchResultVisible: false });
+    onKeyPress(key, value) {
+        if (key === 'Enter' && trim(value)) {
+            this.props.history.push(`/search/${value}`);
+        }
     }
 
     onIconClick() {
-        this.setState({ value: '', isSearchResultVisible: false });
+        const value = this.searchBox.value
+        if (trim(value)) {
+            this.props.history.push(`/search/${value}`);
+        }
+        console.log(this.searchBox.value);
     }
 
     onSearchBarClick() {
@@ -170,13 +175,12 @@ class SearchBar extends Component {
 
     performSearch(searchId) {
         this.setState({ isSearchResultVisible: false }, () => {
-            this.props.history.push(`./${searchId}`);
-        })
+            this.props.history.push(`/details/${searchId}`);
+        });
     }
 
     handleClickOutside() {
         this.setState({
-            value: '',
             isSearchResultVisible: this.state.isSearchResultVisible && !this.state.isSearchResultVisible,
         });
     }
@@ -185,7 +189,7 @@ class SearchBar extends Component {
         this.listCounter = -1;
         const className = c(classes.searchBar, this.props.className);
         const placeholder = this.props.intl.formatMessage({ id: 'search.placeholder' });
-        const { isSearchResultVisible } = this.state;
+        const { isSearchResultVisible, value, matchedResult } = this.state;
 
         return (
             <div className={ className }>
@@ -194,13 +198,14 @@ class SearchBar extends Component {
                         ref={ (element) => { this.searchBox = element; } }
                         type='text'
                         placeholder={ placeholder }
-                        value={ this.state.value }
+                        value={ value }
                         onChange={ event => this.onInputChange(event.target.value) }
-                        onKeyPress={ event => this.onKeyPress(event.key) }
+                        onFocus={ event => this.onInputChange(event.target.value) }
+                        onKeyPress={ event => this.onKeyPress(event.key, event.target.value) }
                         onKeyDown={ event => this.navigateSearchResult(event) }
-                        />
+                    />
                 </div>
-                <button className={ classes.button } onClick={ () => this.onIconClick() }>
+                <button onClick={ () => this.onIconClick() }>
                     <i className="material-icons">
                         search
                     </i>
@@ -208,18 +213,18 @@ class SearchBar extends Component {
                 {
                     <div className={ c(classes.searchResultWrapper, { [classes.hideResult]: !isSearchResultVisible }) }>
                         <ul className={ classes.searchResults }>
-                            { this.state.matchedResult.map((listItem, index) => {
+                            { matchedResult.map((listItem, index) => {
                                     return (
                                       <li
                                         ref={ (element) => { this[this.generateRef(index)] = element; } }
                                         key={ index }
                                         tabIndex='0'
-                                        onClick={ () => this.performSearch(listItem.name) }
+                                        onClick={ () => this.performSearch(listItem.title) }
                                       >
-                                          <img src={listItem.src} />
+                                          {listItem.imageLink ? <img src={listItem.imageLink} /> : null}
                                           <div>
-                                            <h3> { listItem.name } </h3>
-                                            <p> { listItem.desc } </p>
+                                            <h3> { listItem.title } </h3>
+                                            <p> { listItem.description } </p>
                                           </div>
                                       </li>
                                      )
@@ -253,7 +258,7 @@ SearchBar.propTypes = {
     value: PropTypes.string,
     intl: intlShape.isRequired,
     setSearch: PropTypes.func.isRequired,
-    searchList: PropTypes.object.isRequired,
+    searchList: PropTypes.array.isRequired,
     history: React.PropTypes.shape({
         push: React.PropTypes.func.isRequired,
     }).isRequired,
