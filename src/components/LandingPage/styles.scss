@@ -4,11 +4,11 @@
 
 .bodyWrapper {
     position: relative;
-
     .logoImg {
-        left: 45%;
+        left: 50%;
         position: absolute;
         top: 50px;
+        margin-left: -50px;
     }
 
 }

@@ -1,12 +1,11 @@
 @import '../../../styles/color';
 @import '../../../styles/typography';
-@import '../../../styles/responsive';
 
 .boxContainer{
   width: 100px;
   height: auto;
   position: absolute;
-  top: 12%;
+  top: 20%;
   left: 0;
   right: 0;
   margin: $loginLogHeight auto 20px;
@@ -14,12 +13,10 @@
 
 .logoContainer {
     background-image: url('../../public/logo.png');
-    text-align: center;
     width: 100px;
     height: 67px;
-    background-size: 100% 100%;
     position: absolute;
-    top: -$loginLogHeight;
+    top: -80px;
     left: 50%;
     margin-left: -50px;
 }
@@ -78,11 +75,5 @@
       margin-left: 8px;
       border-bottom: 1px solid;
     }
-}
-
-@media (max-width: $breakpointSmall) {
-  .boxContainer {
-    top:8%;
-  }
 }
 

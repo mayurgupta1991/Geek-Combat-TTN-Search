@@ -4,7 +4,7 @@ import webFont from 'webfontloader';
 // Load custom fonts
 webFont.load({
     google: {
-        families: ['Montserrat:300,400,500,600,700', 'Roboto:300,400,500,600,700'],
+        families: ['Source Sans Pro:300,400,500,600,700', 'Roboto:300,400,500,600,700'],
     },
 });
 

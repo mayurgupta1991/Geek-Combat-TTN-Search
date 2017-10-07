@@ -171,20 +171,22 @@ class SearchBar extends Component {
         const placeholder = this.props.intl.formatMessage({ id: 'search.placeholder' });
         return (
             <div className={ classes.searchBar }>
+                <div className={ classes.inputWrapper }>
+                    <input
+                        ref={ (element) => { this.searchBox = element; } }
+                        type='text'
+                        placeholder={ placeholder }
+                        value={ this.state.value }
+                        onChange={ event => this.onInputChange(event.target.value) }
+                        onKeyPress={ event => this.onKeyPress(event.key) }
+                        onKeyDown={ event => this.navigateSearchResult(event) }
+                        />
+                </div>
                 <button className={ classes.button } onClick={ () => this.onIconClick() }>
                     <i className="material-icons">
                         search
                     </i>
                 </button>
-                <input
-                    ref={ (element) => { this.searchBox = element; } }
-                    type='text'
-                    placeholder={ placeholder }
-                    value={ this.state.value }
-                    onChange={ event => this.onInputChange(event.target.value) }
-                    onKeyPress={ event => this.onKeyPress(event.key) }
-                    onKeyDown={ event => this.navigateSearchResult(event) }
-                />
                 {
                     <div className={ classes.searchResultWrapper }>
                         <ul className={ classes.searchResults }>
@@ -196,8 +198,11 @@ class SearchBar extends Component {
                                         tabIndex='0'
                                         onClick={ () => this.performSearch(listItem.name) }
                                       >
+                                          <img src={listItem.src} />
+                                          <div>
                                             <h3> { listItem.name } </h3>
                                             <p> { listItem.desc } </p>
+                                          </div>
                                       </li>
                                      )
                                 })
