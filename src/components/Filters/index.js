@@ -94,7 +94,9 @@ class Filters extends Component {
         ];
         return (
           <div className={ classes.filterWrapper }>
-                <h4> FilterBy: </h4>
+                <h4 className={ classes.filterWrapperHeading }>
+                    Filters:
+                </h4>
                 <div className={ classes.categoryWrapper }>
                     { filters.map(filter => {
                           return (

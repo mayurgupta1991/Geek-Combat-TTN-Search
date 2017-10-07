@@ -2,9 +2,11 @@
     :global {
         .react-tags {
             position: relative;
-            padding: 6px 0 0 6px;
+            padding: 4px 0 0 6px;
             border: 1px solid #D1D1D1;
             border-radius: 1px;
+            background: #ffffff;
+            margin: 8px 0;
 
             /* shared font styles */
             font-size: 1em;

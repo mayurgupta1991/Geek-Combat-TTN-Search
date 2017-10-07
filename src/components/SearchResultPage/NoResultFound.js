@@ -5,7 +5,7 @@ class NoResultFound extends Component {
     render() {
         return (
           <div className={ classes.noResultWrapper }>
-              OOPSSSSSSSSSSSSSSSS, Not Found
+              No Record Found
           </div>
         );
     }

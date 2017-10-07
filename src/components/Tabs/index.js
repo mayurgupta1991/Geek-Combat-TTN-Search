@@ -11,53 +11,73 @@ import classes from './style.scss';
 const dummyTabs = [
     {
         identifier: 1,
-        label: 'asdadasda',
+        label: 'all',
         content: [
             {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+                name: 'HDFC Limited - Retail Lending Operations (0-5 yrs) Delhi/NCR',
+                desc: 'HDFC',
+                region: 'New Delhi Area, India 3mo',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAMPAAAAJDNjOTZmNDM3LTI2MTMtNDhlZi05ZjMwLTZmZTQ5MTA3ZmQyMg.png',
             },
             {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+                name: 'HDFC - System Analyst & Administrator - Incident Management (4-8 yrs) Mumbai',
+                desc: 'HDFC',
+                region: 'Mumbai Area, India 2mo',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAMPAAAAJDNjOTZmNDM3LTI2MTMtNDhlZi05ZjMwLTZmZTQ5MTA3ZmQyMg.png',
             },
             {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+                name: 'Powerbuilder Developer/Technical Lead',
+                desc: 'Tata Consultancy Services',
+                region: 'Mumbai Area, India 1w',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
             },
             {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
+                name: 'Service Now Developer',
+                desc: 'Tata Consultancy Services',
+                region: 'Mumbai Area, India 1w',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
             },
-            {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM111111111111111111111111',
-            }
         ],
     },
     {
         identifier: 2,
-        label: 'asdadasda',
+        label: 'people',
         content: [],
     },
     {
         identifier: 3,
-        label: 'asdadasda',
+        label: 'content',
         content: [
             {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM1111111111111111111111111',
-            }
+                name: 'Powerbuilder Developer/Technical Lead',
+                desc: 'Tata Consultancy Services',
+                region: 'Mumbai Area, India 1w',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
+            },
+            {
+                name: 'Service Now Developer',
+                desc: 'Tata Consultancy Services',
+                region: 'Mumbai Area, India 1w',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
+            },
         ],
     },
     {
         identifier: 4,
-        label: 'asdadasda',
+        label: 'companies',
         content: [
             {
-                name: 'AAAAAAAAAAAAAAAAAA',
-                desc: 'MMMMMMMMMMMMMMMMMM2222222222222222222222222222',
-            }
+                name: 'Powerbuilder Developer/Technical Lead',
+                desc: 'Tata Consultancy Services',
+                region: 'Mumbai Area, India 1w',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
+            },
+            {
+                name: 'Service Now Developer',
+                desc: 'Tata Consultancy Services',
+                region: 'Mumbai Area, India 1w',
+                src: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
+            },
         ],
     },
 ];
@@ -94,7 +114,7 @@ class Tabs extends Component {
                 style={ dynamicWidth }
                 onClick={ () => this.switchTab(item.identifier) }
              >
-                <span> { item.label } </span>
+                <button> { item.label } </button>
             </li>
         ));
         return tabs;

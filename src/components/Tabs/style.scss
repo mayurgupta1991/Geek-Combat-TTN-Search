@@ -1,4 +1,4 @@
-
+@import '../../styles/color';
 
 .tabContainer {
     min-height: 200px;
@@ -7,38 +7,62 @@
     margin-right: 10px;
 
     ul.tabOptions {
-        display: inline-block;
+        display: block;
         list-style: none;
-        padding: 0 0 20px 0;
+        padding: 0;
+        border-bottom: 1px solid rgba(0,0,0,.15);
+        margin: 0 0 30px 0;
 
         > li {
-            border-bottom: 2px solid grey;
             cursor: pointer;
             display: inline-block;
             position: relative;
             padding: 0px 24px 0px 16px;
-            min-width: 150px;
 
             &.active, &.active:hover {
-                border-bottom: 2px solid orange;
-                > span {
-                    color: blue;
+                cursor: default;
+                > button {
+                    cursor: default;
+                    color: $bluedark400;
+                    &:after {
+                        background-color: $bluedark400;
+                        bottom: 0;
+                        content: '';
+                        height: 4px;
+                        left: 0;
+                        position: absolute;
+                        width: 100%;
+                    }
                 }
             }
 
-            &:hover {
-                border-bottom: 2px solid #ccc;
+            > button {
+                cursor: pointer;
+                font-weight: 500;
+                line-height: 20px;
+                color: rgba(0,0,0,.55);
+                margin: 0;
+                padding: 12px 8px;
+                text-align: center;
+                text-transform: capitalize;
+                font-size: 17px;
+
+                &:after {
+                    content: '';
+                    width: 0;
+                    height: 2px;
+                    background-color: transparent;
+                    margin: auto;
+                    display: block;
+                    transition: all .2s ease;
+                    bottom: 0;
+                    left: 50%;
+                    position: absolute;
+                }
             }
 
-            > span {
-                color: grey;
-                cursor: pointer;
-                font-size: 400;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: inline-block;
-                width: 100%;
+            &:first-child {
+                padding-left: 0;
             }
 
             .iconStyle {
@@ -70,24 +94,77 @@
 
 .searchResultWrapper {
     width: 100%;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
+    border-radius: 2px;
+    background: $white;
 
     .searchResults {
         margin: 0;
         padding: 0;
 
-        .snapshot {
-            width: 90%;
-            display: inline-block;
+        .searchResultImageWrapper {
+            margin: 12px 0 12px 0;
+            figure {
+                width: 56px;
+                height: 56px;
+                background-clip: content-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                box-sizing: border-box;
+                z-index: 0;
+                overflow: hidden;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                margin: 8px 20px 0;
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+        }
+
+        .searchResultInfo {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            border-top: 1px solid rgba(0,0,0,.15);
+            padding-top: 12px;
+            padding-right: 24px;
+            padding-bottom: 16px;
+            h3 {
+                color: #0084bf;
+                font-size: 17px;
+                font-weight: 700;
+            }
+            p {
+                font-weight: 400;
+                color: rgba(0,0,0,.85);
+                font-size: 15px;
+            }
+            p.searchResultRegion {
+                font-weight: 400;
+                font-size: 13px;
+            }
         }
 
         li {
             display: flex;
             list-style-type: none;
-            border-bottom: 1px solid lightgrey;
-            margin-right: 20px;
-            margin-left: 20px;
-            padding-bottom: 5px;
-            padding-top: 5px;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            &:first-child {
+                .searchResultInfo {
+                    border-top: 0;
+                }
+            }
+            &:focus {
+                outline: none;
+            }
         }
     }
 }

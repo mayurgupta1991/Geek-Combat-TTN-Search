@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
 import c from 'classnames';
 import uniqueId from 'lodash/uniqueId';
 import pickBy from 'lodash/pickBy';
@@ -23,11 +22,16 @@ class SearchResult extends Component {
                               tabIndex='0'
                               onClick={ () => this.performSearch(listItem.name) }
                           >
-                              <span className={ classes.snapshot }>
+                              <div className={ classes.searchResultImageWrapper }>
+                                  <figure>
+                                      <img src={listItem.src} />
+                                  </figure>
+                              </div>
+                              <div className={ classes.searchResultInfo }>
                                   <h3> { listItem.name } </h3>
                                   <p> { listItem.desc } </p>
-                              </span>
-                              <RaisedButton label="VIEW"  />
+                                  <p className={ classes.searchResultRegion }> { listItem.region } </p>
+                              </div>
                           </li>
                         )
                       })

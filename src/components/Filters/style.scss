@@ -1,11 +1,15 @@
 .filterWrapper {
     width: 25%;
+    .filterWrapperHeading {
+        font-weight: 400;
+        font-size: 17px;
+    }
 }
 
 .categoryWrapper {
     > div {
         padding-top: 10px;
         padding-bottom: 10px;
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid rgba(0,0,0,.15);
     }
 }

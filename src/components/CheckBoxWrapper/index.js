@@ -2,7 +2,8 @@ import React, { Component } from  'react';
 import Checkbox from 'material-ui/Checkbox';
 import c from 'classnames';
 import capitalize from 'lodash/capitalize';
-import styles from './style.scss';
+import classes from './style.scss';
+import styles from './styles';
 
 export default class CheckBoxWrapper extends Component {
     constructor (props) {
@@ -29,7 +30,7 @@ export default class CheckBoxWrapper extends Component {
 
     render() {
         const { filterData } = this.props
-        const className = c('material-icons', styles.iconStyle);
+        const className = c('material-icons', classes.iconStyle);
         return (
             <div>
               <span> { capitalize(filterData.type) }: </span>
@@ -45,6 +46,8 @@ export default class CheckBoxWrapper extends Component {
                               label={checkbox.name}
                               onCheck={(event, isInputchecked) => this.handleCheck(event, isInputchecked, checkbox.id, filterData.type)}
                               checked={ this.state.activeCheckboxes.includes(checkbox.id) }
+                              labelStyle={styles.labelStyle}
+                              iconStyle={styles.iconStyle}
                            />
                       )
                   })
