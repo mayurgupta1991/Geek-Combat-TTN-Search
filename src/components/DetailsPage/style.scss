@@ -1,8 +1,60 @@
 .detailsWrapper {
-
-    .logoImg {
-        height: 200px;
+    .logoImgWrapper {
+        background-color: #f3f6f8;
+        height: 220px;
+        border-bottom: 1px solid rgba(0,0,0,.15);
+        left: 0;
+        position: relative;
         width: 100%;
+        margin: 0;
+
+        .picture_cropper {
+            min-height: 220px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .bg_img_visible_content {
+            width: 100%;
+            position: relative;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                pointer-events: none;
+                background: linear-gradient(transparent,rgba(0,0,0,.55));
+
+            }
+        }
+
+        .bg_img_cropper {
+            width: 100%;
+            padding: 0;
+            background: 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pic_cropper_target {
+            width: 100%;
+            height: 220px;
+            img {
+                position: absolute;
+                margin: 0;
+                left: 0px;
+                transform: rotate(0deg);
+                transform-origin: 594px 324.68857142857144px;
+                height: 593.9999999999999px;
+                width: 100%;
+            }
+        }
     }
 
     .details {
@@ -10,17 +62,28 @@
         top: -50px;
         width: 90%;
         left: 5%;
+        z-index: 1;
 
         .overView {
             display: flex;
             height: 200px;
             background: white;
             margin-top: 15px;
-            box-shadow: 1px 3px 1px #888888;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
             border-radius: 2px;
 
             .overViewDescription {
                 margin-top: 15px;
+                h2 {
+                    font-size: 26px;
+                    font-weight: 200;
+                    margin-top: 20px;
+                }
+                p {
+                    color: rgba(0,0,0,.55);
+                    font-size: 15px;
+                    margin-top: 14px;
+                }
             }
 
             .overViewLogo {
@@ -31,11 +94,19 @@
 
         .aboutUs {
             padding: 15px;
-            height: 200px;
             background: white;
             margin-top: 15px;
-            box-shadow: 1px 3px 1px #888888;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2);
             border-radius: 2px;
+             h3 {
+                 font-size: 21px;
+                 font-weight: 300;
+             }
+            p {
+                color: rgba(0,0,0,.7);
+                font-size: 14px;
+                margin-top: 12px;
+            }
         }
     }
 }

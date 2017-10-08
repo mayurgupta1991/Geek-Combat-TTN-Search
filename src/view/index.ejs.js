@@ -33,8 +33,6 @@ module.exports = `
   <div id="app">
   <%- body %>
   </div>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%-geolocationKey%>&"></script>
-<script src="https://content.jwplatform.com/libraries/k23WC3ng.js"></script>
 <script src="<%- vendor %>" defer="defer"></script>
 <script src="<%- entry %>" defer="defer"></script>
 </body>

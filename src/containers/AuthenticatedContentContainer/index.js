@@ -8,8 +8,6 @@ import ReactTooltip from 'react-tooltip';
 import AWS from 'aws-sdk';
 import Header from '../../components/Header';
 import AdminRoutes from '../RouteManagement/AdminRoutes';
-import GuestRoutes from '../RouteManagement/GuestRoutes';
-import HostRoutes from '../RouteManagement/HostRoutes';
 import { logOut } from '../../actions/async/authentication';
 import endpoints from '../../endpoints/authentication';
 import { headerHeight, USER_TYPE } from '../../constants';
@@ -55,10 +53,6 @@ class AuthenticatedContentContainer extends Component {
         if (isEmpty(userDashboard)) {
             return null;
         }
-        const content = (userDashboard.role === USER_TYPE.ADMIN || userDashboard.role === USER_TYPE.OPERATOR) ?
-          <AdminRoutes /> : (userDashboard.role === USER_TYPE.HOST || userDashboard.role === USER_TYPE.VENDOR) ?
-            <HostRoutes /> : <GuestRoutes />;
-
         const styles = {
             header: {
                 paddingLeft: 0,
@@ -87,7 +81,7 @@ class AuthenticatedContentContainer extends Component {
                   transitionEnterTimeout={0}
                   transitionLeave={false}
                 >
-                  {content}
+                    <AdminRoutes />
                 </ReactCSSTransitionGroup>
               </div>
             </div>

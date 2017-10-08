@@ -55,7 +55,6 @@ server.get('*', (req, res, next) => {
       entry: assets.index.js,
       vendor: assets.vendor.js,
       stylesheet: assets.index.css,
-      geolocationKey: apiUrl.GOOGLE_GEOLOCATION_KEY,
       body:""
     };
       res.status(200);

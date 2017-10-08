@@ -11,7 +11,6 @@ import { setSearch } from '../../actions/search';
 import { fetchSearchResult } from '../../actions/async/fetchData';
 
 class SearchBar extends Component {
-
     constructor(props) {
         super(props);
 
@@ -27,7 +26,7 @@ class SearchBar extends Component {
     }
 
     componentWillMount() {
-        this.setState({ matchedResult: this.props.searchList });
+        this.setState({ matchedResult: [...this.props.searchList] });
     }
 
     componentWillUnmount() {
@@ -35,7 +34,7 @@ class SearchBar extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-        this.setState({ matchedResult: newProps.searchList, isSearchResultVisible: true });
+        this.setState({ matchedResult: [...newProps.searchList], isSearchResultVisible: true });
     }
 
     onKeyPress(key, value) {
@@ -48,34 +47,6 @@ class SearchBar extends Component {
         const value = this.searchBox.value
         if (trim(value)) {
             this.props.history.push(`/search/${value}`);
-        }
-        console.log(this.searchBox.value);
-    }
-
-    onSearchBarClick() {
-        if (!this.state.value) {
-            const intlReport = this.props.intl.formatMessage(
-                                  { id: 'navigation.goToReport' },
-                                  { groupName: 'Go to Report' },
-                                );
-            const reportList = this.state.resultSet[intlReport];
-            if (reportList && reportList.slice(0, 3).length) {
-                const dashList = {};
-                dashList[intlReport] = reportList && reportList.slice(0, 3);
-                const noOfResults = dashList[intlReport] ? dashList[intlReport].length : 0;
-                this.setState({
-                    isSearchResultVisible: !this.state.isSearchResultVisible,
-                    matchedResult: dashList,
-                    noOfResults,
-                    arrowPressedCount: -1,
-                });
-            }
-        } else {
-            this.setState({
-                isSearchResultVisible: !this.state.isSearchResultVisible,
-                value: '',
-                arrowPressedCount: -1,
-            });
         }
     }
 
@@ -94,18 +65,6 @@ class SearchBar extends Component {
 
             return nodes;
         }, []);
-    }
-
-    shouldResultVisible() {
-        return Object.keys(this.state.matchedResult).length && this.state.isSearchResultVisible;
-    }
-
-    searchResultHeight() {
-        const noOfGroups = Object.keys(this.state.matchedResult).length;
-        const dropDownHeight = this.state.noOfResults + noOfGroups;
-        return ((dropDownHeight * SEARCHRESULT_HEIGHT) > SEARCH_DROPDOWN_HEIGHT
-          ? SEARCH_DROPDOWN_HEIGHT
-          : ((dropDownHeight * SEARCHRESULT_HEIGHT) + (noOfGroups - 1)));
     }
 
     navigateSearchResult(event) {
@@ -170,7 +129,11 @@ class SearchBar extends Component {
     onInputChange(value) {
         value && this.setState({ value }, () => {
             value.length >= 3 && this.props.setSearch(value);
-        }) || this.setState({ matchedResult: [], value });
+        }) || this.setState({ value });
+    }
+
+    onInputFocus() {
+        this.setState({ isSearchResultVisible: true });
     }
 
     performSearch(searchId) {
@@ -200,7 +163,7 @@ class SearchBar extends Component {
                         placeholder={ placeholder }
                         value={ value }
                         onChange={ event => this.onInputChange(event.target.value) }
-                        onFocus={ event => this.onInputChange(event.target.value) }
+                        onFocus={ event => this.onInputFocus() }
                         onKeyPress={ event => this.onKeyPress(event.key, event.target.value) }
                         onKeyDown={ event => this.navigateSearchResult(event) }
                     />

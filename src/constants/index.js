@@ -39,3 +39,42 @@ export const SEARCH_DROPDOWN_HEIGHT = 320;
 export const SEARCHRESULT_HEIGHT = 32;
 export const SET_SEARCH_RESULT = 'SET_SEARCH_RESULT';
 export const SET_DETAILS = 'SET_DETAILS';
+
+export const SearchBarDummyData = [
+    {
+        title: 'HDFC IT',
+        description: 'Company',
+        imageLink: 'https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-1/p24x24/13592799_1361299897219221_6628637694680721779_n.jpg?oh=a2dae952a8fb43da52dbf4ca4f1b6b5f&oe=5A3CEE00',
+    },
+    {
+        title: 'HDFC Life',
+        description: 'Company',
+        imageLink: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/000/07f/283/290a400.png',
+    },
+
+    {
+        title: 'HDFC Life - Insurance products - HDFC Life Showcase page',
+        description: 'Company',
+        imageLink: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/000/07f/283/290a400.png',
+    },
+    {
+        title: 'HDFC Bank',
+        description: 'Company',
+        imageLink: 'https://media-exp2.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAxNAAAAJGVlYzI4MTFhLTIwZDctNGNmMC05ZWJkLTIxOGQ2Nzc3M2IzYg.png',
+    },
+    {
+        title: 'HDFC Bank Ltd.',
+        description: 'Company',
+        imageLink: 'https://media-exp2.licdn.com/mpr/mpr/shrinknp_100_100/p/3/000/008/018/0b9d4b6.png',
+    },
+    {
+        title: 'HDFC Limited',
+        description: 'Company',
+        imageLink: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
+    },
+    {
+        title: 'HDFC Bank Ltd Mumbai',
+        description: 'Company',
+        imageLink: 'https://media-exp2.licdn.com/mpr/mpr/shrink_100_100/p/1/005/00c/124/3460995.png',
+    },
+];
